@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Voice Controlled Notes App</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/shoelace-css/1.0.0-beta16/shoelace.css">
+        <link rel="stylesheet" href="styles.css">
+
+    </head>
+    <body>
+        <div class="container">
+            
+            <h1>irampups-geeksters</h1>
+            <!-- <p class="page-description">Self-Preparation App for interview, Presentation</p> -->
+           <h1>Live Preparation</h1>
+           <h1 class="option-select"></h1>
+           <div class="button-options-right">
+               <a  class="" id="module-button" onclick="techTrends()">Tech Trends</a>
+               <a class="" id="module-button">General Queries</a>
+
+           </div>
+           <canvas id="avatar"></canvas>
+           <div class="button-options-left">
+               <a  class="" id="module-button">Industry Specific</a>
+               <a  class="" id="module-button">Product Specific</a>
+a
+           </div>
+        
+        <!-- <img src="images/modules.png" style="width:600px; height:300px; margin-left:30%"> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <div class="question">
+            <h6>Your Question:</h6><span id="random-question"></span>
+            <!-- <a class="next" onclick="next()">next>></a> -->
+            <h6>Your Answers:</h6>
+            <div class="input-single">
+                <textarea id="note-textarea" placeholder="Speak using voice recognition." rows="2"></textarea>
+            </div>         
+            <div class="countdown"></div>
+            <div id="speech-buttons">
+                <a id="start-record-btn" class="recog" title="Start Recording">Start Recognition</a>
+                <a id="pause-record-btn"  class="recog" title="Pause Recording">Pause Recognition</a>
+                <!-- <a id="save-note-btn" class="recog" title="Save">Save</a>  -->
+            </div>  
+            <!-- <p id="recording-instructions">Press the <strong>Start Recognition</strong> button and allow access.</p> -->
+        </div>
+         <span id="response1">
+            <ul>
+                <li>
+                    <h5>Sentimental Analysis:</h5>
+                </li>
+                <li>
+                    <h5>Correct Percentage:</h5>
+                </li>
+            </ul>
+        </span>
+        <button class="back-button" onclick="back()" style="display: block">Back</button><br>
+    </div>
+        <script src="js/start-preparation.js"></script>
+        <!-- <script src="script.js"></script> -->
+    </body>
+</html>
+
+
