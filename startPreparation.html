@@ -18,15 +18,14 @@
            <h1>Live Preparation</h1>
            <h1 class="option-select"></h1>
            <div class="button-options-right">
-               <a  class="" id="module-button" onclick="techTrends()">Tech Trends</a>
-               <a class="" id="module-button">General Queries</a>
+               <a  class="" id="module-button" onclick="getQuestions('TT')">Tech Trends</a>
+               <a class="" id="module-button" onclick="getQuestions('GQ')">General Queries</a>
 
            </div>
            <canvas id="avatar"></canvas>
            <div class="button-options-left">
-               <a  class="" id="module-button">Industry Specific</a>
-               <a  class="" id="module-button">Product Specific</a>
-a
+               <a  class="" id="module-button" onclick="getQuestions('IS')">Industry Specific</a>
+               <a  class="" id="module-button" onclick="getQuestions('PS')">Product Specific</a>
            </div>
         
         <!-- <img src="images/modules.png" style="width:600px; height:300px; margin-left:30%"> -->
@@ -47,14 +46,14 @@ a
             <!-- <p id="recording-instructions">Press the <strong>Start Recognition</strong> button and allow access.</p> -->
         </div>
          <span id="response1">
-            <ul>
+            <!-- <ul>
                 <li>
                     <h5>Sentimental Analysis:</h5>
                 </li>
                 <li>
                     <h5>Correct Percentage:</h5>
                 </li>
-            </ul>
+            </ul> -->
         </span>
         <button class="back-button" onclick="back()" style="display: block">Back</button><br>
     </div>
