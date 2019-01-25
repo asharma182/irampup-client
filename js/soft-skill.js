@@ -75,9 +75,9 @@
           for(key in responsedata){
             console.log(key)
           }
-          $('div#response').html('');
+          $('div#response-soft-skill').html('');
           var response = '<h4>' + 'The Correct sentence is:  ' + responsedata['correctgrammar'] + '</h4>';
-          $('div#response').html(response);
+          $('div#response-soft-skill').html(response);
           console.log(responseData);
           readOutLoud(response)
   

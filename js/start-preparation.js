@@ -66,7 +66,8 @@ function sendDataForSpeedCheck(noteContent){
   // });
   $.ajax({
     type: 'POST',
-    url: 'http://129.213.100.184:5000/checkAnswer',
+    // url: 'http://129.213.100.184:5000/checkAnswer',
+    url: 'http://127.0.0.1:5000/checkAnswer',
     crossDomain: true,
     data: JSON.stringify(data),
     contentType: "application/json",
@@ -76,13 +77,31 @@ function sendDataForSpeedCheck(noteContent){
     {   
 
       console.log(responseData);
-      var responsedata = JSON.parse(responseData);
-      console.log(typeof(responsedata));
-        for(key in responsedata){
-          console.log(key)
+      // var responsedata = JSON.parse(responseData);
+      console.log(typeof(responseData));
+        // for(key in responsedata){
+        //   console.log(key)
+        // }
+        console.log(typeof(responseData['correctPercentage'] ));
+        var str ="";
+        if (responseData['correctPercentage'] === "0.0"){
+          console.log("no match found")
+          str = "No match";
         }
-        var response = 'Your Word Count is: ' + responsedata['length'];
-        $('span#response').html(response);
+        else{
+          str = responseData['correctPercentage'].toString();
+        }
+        $('span#response1').html('');
+var myvar = '<ul>'+
+'                <li>'+
+'                    <h5>Sentimental Analysis:</h5>'+ responseData['sentimentalAnalysis'] +
+'                </li>'+
+'                <li>'+
+'                    <h5>Correct Percentage:</h5>'+ str + 
+'                </li>'+
+'            </ul>';
+	
+        $('span#response1').html(myvar);
         console.log(responseData);
 
     },
@@ -253,11 +272,11 @@ function back(){
 }
 var responsedata;
 
-function techTrends(){
+function getQuestions(data){
     // $('span#response').append("hiii");
     $.ajax({
         type: 'GET',
-        url: 'http://129.213.100.184:5000/techtrend',
+        url: 'http://127.0.0.1:5000/getQuestions/' + data,
         crossDomain: true,
         // data: data,
         dataType: 'text',

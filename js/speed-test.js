@@ -9,7 +9,8 @@
     $('.app').hide();
   }
   
-  
+  var startTime;
+  var endTime;
   var noteTextarea = $('#note-textarea');
   var instructions = $('#recording-instructions');
   var notesList = $('ul#notes');
@@ -56,16 +57,22 @@
   };
   
   function sendDataForSpeedCheck(noteContent){
-    console.log("hiii");
-     let data= noteContent;
+    console.log("hiii", endDate, startDate);
+    var seconds = (endDate.getTime() - startDate.getTime()) / 1000;
+    var speakTime = (seconds.toString()).split(".")[0]
+     let data= {
+       noteContent: noteContent,
+       speakTime: speakTime
+     }
     // $.post("locathost:5000/speedtest",data, function(data, status){
     //   alert("Data: " + data + "\nStatus: " + status);
     // });
+   
     $.ajax({
       type: 'POST',
       url: 'http://127.0.0.1:5000/speedtest',
       crossDomain: true,
-      data: data,
+      data: JSON.stringify(data),
       dataType: 'text',
       timeout: 10000,
       success: function(responseData, textStatus, jqXHR) 
@@ -113,11 +120,13 @@
       noteContent += ' ';
     }
     recognition.start();
+    startDate = new Date();
   });
   
   
   $('#pause-record-btn').on('click', function(e) {
     recognition.stop();
+    endDate = new Date();
     instructions.text('Voice recognition paused.');
   });
   
