@@ -9,14 +9,21 @@ build:
         name: Nose tests
         code: bin/tests
 
+    - internal/docker-build:
+      dockerfile: Dockerfile
+      image-name: $DOCKER_REPO
+     
         # Take our tested application revision and its dependencies, bake it in to a
     # Docker image, and push to OCIR.
     - internal/docker-push:
-            entrypoint: bin/get_ip
-            cmd: 0.0.0.0 8080
-            working-dir: $WERCKER_ROOT
+      username: $DOCKER_USERNAME
+      password: $DOCKER_PASSWORD
+      tag: $WERCKER_GIT_COMMIT
+      repository: $DOCKER_REPO
+      registry: https://iad.ocir.io/v2/
+
+    - internal/docker-push:
             tag: $WERCKER_GIT_COMMIT
-            ports: "8080"
             username: $DOCKER_USERNAME
             password: $DOCKER_PASSWORD
             repository: $DOCKER_REPO
