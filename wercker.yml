@@ -5,6 +5,12 @@ build:
     # Check that our application's tests are passing. Since this is a python
     # application, our entry script will also install the application's dependencies
     # with Virtualenv
+    
+    - script:
+      name: force "go get" over ssh
+      code: git config --global url."git@github.com:".insteadOf "https://github.com/"
+    
+    
     - internal/docker-build:
       dockerfile: Dockerfile
       image-name: $REPO_REPOSITORY:$WERCKER_GIT_COMMIT
