@@ -73,6 +73,7 @@ function sendImage(blob){
         //        }
                 $("span#response").html("");
                 $("span#response").append(responseData);
+                sendImageToDb();
     
         },
         error: function (responseData, textStatus, errorThrown) 
@@ -81,11 +82,34 @@ function sendImage(blob){
             alert('failed - ' + textStatus);
         }
     });
+
+
+}
+
+function sendImageToDb(){
+  $.ajax({
+    type: 'GET',
+    url: 'http://129.213.8.217:5002/imageInsertion',
+    crossDomain: true,
+    processData: false,
+    contentType: false,
+    timeout: 50000,
+    success: function(responseData, textStatus, jqXHR) 
+    {   
+        console.log("done");
+
+    },
+    error: function (responseData, textStatus, errorThrown) 
+    {
+        console.warn(responseData, textStatus, errorThrown);
+        alert('failed - ' + textStatus);
+    }
+});
 }
 }
 
 function back(){
-    window.location.replace("http://129.213.192.34:8080/home");
+    window.location.replace("http://127.0.0.1:8080/home");
 }
 
 

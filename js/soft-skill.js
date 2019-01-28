@@ -63,7 +63,7 @@
     // });
     $.ajax({
       type: 'POST',
-      url: 'http://129.213.197.247:5000/softKill',
+      url: 'http://129.213.100.184:5002/softKill',
       crossDomain: true,
       data: data,
       dataType: 'text',
