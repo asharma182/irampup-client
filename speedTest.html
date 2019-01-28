@@ -14,8 +14,11 @@
         <div class="container">
             
             <h1>irampups-geeksters</h1>
-            <p class="page-description">Self-Preparation App for interview, Presentation</p>
+            <p class="page-description">Self-Preparation App for Demo and Presentation</p>
             <h3 class="no-browser-support">Sorry, Your Browser Doesn't Support the Web Speech API. Try Opening This Demo In Google Chrome.</h3>
+            <div class="avatar-speed-test" style="margin-top:-5%">
+                <iframe src="images/finalavatarsilent.gif"  style="-webkit-transform:scale(0.5); height: 688px; width:770px; margin-top: -123px" frameBorder="0" id="giphy-embed" allowFullScreen></iframe>
+            </div>
             <button class="back-button" onclick="back()">Back</button><h1 class="option-select"></h1>
             <div class="app"> 
                 <!-- <h3>Add New Note</h3> -->
@@ -23,9 +26,20 @@
                     <textarea id="note-textarea" placeholder="Speak using voice recognition." rows="6"></textarea>
                 </div>         
                 <div class="countdown"></div>
+                <form id="speed-options">
+                    <select name="speedOption" onchange="selectedOption(this)">
+                    <option value="" disabled selected>Select your speed option</option>
+                      <option value="Presentations">Presentations</option>
+                      <option value="Conversational">Conversational</option>
+                      <option value="Audiobooks">Audiobooks</option>
+                      <option value="RadioHostAndPodcasters">Radio hosts and podcasters</option>
+                      <option value="Auctioneers">Auctioneers</option>
+                      <option value="Commentators">Commentators</option>
+                    </select>
+                  </form>
                 <button id="start-record-btn" title="Start Recording">Start Recognition</button>
                 <button id="pause-record-btn" title="Pause Recording">Pause Recognition</button>
-                <button id="save-note-btn" title="Save">Save</button>   
+                <button id="save-note-btn" title="Save">Save to listen</button>   
                 <p id="recording-instructions">Press the <strong>Start Recognition</strong> button and allow access.</p>
                 
                 <h3>Your Speech to Text</h3>
@@ -42,7 +56,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <!-- <script src="script.js"></script> -->
         <script src="js/speed-test.js"></script> 
-        <span id="response"></span>
+        <span id="response-speed"></span>
     </body>
 </html>
 

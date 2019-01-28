@@ -1,10 +1,10 @@
-$(window).ready(function() { 
+$(window).ready(function () {
   // $('body').jmspinner();
   $('.app, .back-button').hide();
-  
+
   // setTimeout(myFunction, 3000)
- 
-  
+
+
 });
 
 // function myFunction(){
@@ -33,7 +33,7 @@ try {
   var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
   var recognition = new SpeechRecognition();
 }
-catch(e) {
+catch (e) {
   console.error(e);
   $('.no-browser-support').show();
   $('.app').hide();
@@ -62,7 +62,7 @@ renderNotes(notes);
 recognition.continuous = true;
 
 // This block is called every time the Speech APi captures a line. 
-recognition.onresult = function(event) {
+recognition.onresult = function (event) {
 
   // event is a SpeechRecognitionEvent object.
   // It holds all the lines we have captured so far. 
@@ -77,7 +77,7 @@ recognition.onresult = function(event) {
   // There is no official solution so far so we have to handle an edge case.
   var mobileRepeatBug = (current == 1 && transcript == event.results[0][0].transcript);
 
-  if(!mobileRepeatBug) {
+  if (!mobileRepeatBug) {
     noteContent += transcript;
     noteTextarea.val(noteContent);
     console.log(noteContent);
@@ -85,50 +85,48 @@ recognition.onresult = function(event) {
   }
 };
 
-function sendDataForSpeedCheck(noteContent){
+function sendDataForSpeedCheck(noteContent) {
   console.log("hiii");
-   let data= noteContent;
+  let data = noteContent;
   // $.post("locathost:5000/speedtest",data, function(data, status){
   //   alert("Data: " + data + "\nStatus: " + status);
   // });
   $.ajax({
     type: 'POST',
-    url: 'http://127.0.0.1:5000/speedtest',
+    url: 'http://129.213.197.247:5000/speedtest',
     crossDomain: true,
     data: data,
     dataType: 'text',
     timeout: 3000,
-    success: function(responseData, textStatus, jqXHR) 
-    {   
+    success: function (responseData, textStatus, jqXHR) {
       var responsedata = JSON.parse(responseData);
-      console.log(typeof(responsedata));
-        for(key in responsedata){
-          console.log(key)
-        }
-        var response = 'Your Word Count is: ' + responsedata['length'];
-        $('span#response').html(response);
-        console.log(responseData);
+      console.log(typeof (responsedata));
+      for (key in responsedata) {
+        console.log(key)
+      }
+      var response = 'Your Word Count is: ' + responsedata['length'];
+      $('span#response').html(response);
+      console.log(responseData);
 
     },
-    error: function (responseData, textStatus, errorThrown) 
-    {
-        console.warn(responseData, textStatus, errorThrown);
-        alert('failed - ' + textStatus);
+    error: function (responseData, textStatus, errorThrown) {
+      console.warn(responseData, textStatus, errorThrown);
+      alert('failed - ' + textStatus);
     }
-});
+  });
 }
 
-recognition.onstart = function() { 
+recognition.onstart = function () {
   instructions.text('Voice recognition activated. Try speaking into the microphone.');
 }
 
-recognition.onspeechend = function() {
+recognition.onspeechend = function () {
   instructions.text('You were quiet for a while so voice recognition turned itself off.');
 }
 
-recognition.onerror = function(event) {
-  if(event.error == 'no-speech') {
-    instructions.text('No speech was detected. Try again.');  
+recognition.onerror = function (event) {
+  if (event.error == 'no-speech') {
+    instructions.text('No speech was detected. Try again.');
   };
 }
 
@@ -138,7 +136,7 @@ recognition.onerror = function(event) {
       App buttons and input 
 ------------------------------*/
 
-$('#start-record-btn').on('click', function(e) {
+$('#start-record-btn').on('click', function (e) {
   if (noteContent.length) {
     noteContent += ' ';
   }
@@ -146,20 +144,20 @@ $('#start-record-btn').on('click', function(e) {
 });
 
 
-$('#pause-record-btn').on('click', function(e) {
+$('#pause-record-btn').on('click', function (e) {
   recognition.stop();
   instructions.text('Voice recognition paused.');
 });
 
 // Sync the text inside the text area with the noteContent variable.
-noteTextarea.on('input', function() {
+noteTextarea.on('input', function () {
   noteContent = $(this).val();
 })
 
-$('#save-note-btn').on('click', function(e) {
+$('#save-note-btn').on('click', function (e) {
   recognition.stop();
 
-  if(!noteContent.length) {
+  if (!noteContent.length) {
     instructions.text('Could not save empty note. Please add a message to your note.');
   }
   else {
@@ -173,23 +171,23 @@ $('#save-note-btn').on('click', function(e) {
     noteTextarea.val('');
     instructions.text('Note saved successfully.');
   }
-      
+
 })
 
 
-notesList.on('click', function(e) {
+notesList.on('click', function (e) {
   e.preventDefault();
   var target = $(e.target);
 
   // Listen to the selected note.
-  if(target.hasClass('listen-note')) {
+  if (target.hasClass('listen-note')) {
     var content = target.closest('.note').find('.content').text();
     readOutLoud(content);
   }
 
   // Delete note.
-  if(target.hasClass('delete-note')) {
-    var dateTime = target.siblings('.date').text();  
+  if (target.hasClass('delete-note')) {
+    var dateTime = target.siblings('.date').text();
     deleteNote(dateTime);
     target.closest('.note').remove();
   }
@@ -202,15 +200,27 @@ notesList.on('click', function(e) {
 ------------------------------*/
 
 function readOutLoud(message) {
-	var speech = new SpeechSynthesisUtterance();
+  var iframe = document.getElementById('giphy-embed');
+  console.log(iframe.src);
+  iframe.src = "images/finalavatar.gif";
+    var speech = new SpeechSynthesisUtterance();
 
   // Set the text and voice attributes.
-	speech.text = message;
-	speech.volume = 1;
-	speech.rate = 1;
-	speech.pitch = 1;
+    speech.text = message;
+    speech.volume = 1;
+    speech.rate = 1;
+    speech.pitch = 1;
   
-	window.speechSynthesis.speak(speech);
+    window.speechSynthesis.speak(speech);
+    speech.onend = function (event) {
+      t = event.timeStamp - t;
+      console.log(event.timeStamp);
+      console.log((t / 1000) + " seconds");
+       iframe.src = "images/finalavatarsilent.gif";
+      // console.log((t / 1000) + " seconds");
+  };
+  
+   
 }
 
 
@@ -221,20 +231,20 @@ function readOutLoud(message) {
 
 function renderNotes(notes) {
   var html = '';
-  if(notes.length) {
-    notes.forEach(function(note) {
-      html+= `<li class="note">
+  if (notes.length) {
+    notes.forEach(function (note) {
+      html += `<li class="note">
         <p class="header">
           <span class="date">${note.date}</span>
           <a href="#" class="listen-note" title="Listen Your Text">Listen Your Text</a>
           <a href="#" class="delete-note" title="Delete">Delete</a>
         </p>
         <p class="content">${note.content}</p>
-      </li>`;    
+      </li>`;
     });
   }
   else {
-   // html = '<li><p class="content">You don\'t have any notes yet.</p></li>';
+    // html = '<li><p class="content">You don\'t have any notes yet.</p></li>';
   }
   notesList.html(html);
 }
@@ -251,74 +261,74 @@ function getAllNotes() {
   for (var i = 0; i < localStorage.length; i++) {
     key = localStorage.key(i);
 
-    if(key.substring(0,5) == 'note-') {
+    if (key.substring(0, 5) == 'note-') {
       notes.push({
-        date: key.replace('note-',''),
+        date: key.replace('note-', ''),
         content: localStorage.getItem(localStorage.key(i))
       });
-    } 
+    }
   }
   return notes;
 }
 
 
 function deleteNote(dateTime) {
-  localStorage.removeItem('note-' + dateTime); 
+  localStorage.removeItem('note-' + dateTime);
 }
 
 
-function speedTest(){
+function speedTest() {
   console.log("speed test");
   $('.button-options-left').hide();
   $('.button-options-right').hide();
   $('.option-select').append('Speed Test');
   $('.app, .back-button').show();
 
-  window.location.replace("http://127.0.0.1:8080/speedTest");
+  window.location.replace("http://129.213.192.34:8080/speedTest");
 }
 
 
-function back(){
+function back() {
   location.reload();
 }
 
 
-function searchModules(){
+function searchModules() {
   console.log("modules test");
   $('.button-options-left').hide();
   $('.button-options-right').hide();
   $('.option-select').append('Modules');
-  window.location.replace("http://127.0.0.1:8080/modules");
+  window.location.replace("http://129.213.192.34:8080/modules");
 }
 
-function startPreparation(){
+function startPreparation() {
   console.log("start preparation test");
   $('.button-options-left').hide();
   $('.button-options-right').hide();
   $('.option-select').append('Modules');
-  window.location.replace("http://127.0.0.1:8080/startPreparation");
+  window.location.replace("http://129.213.192.34:8080/startPreparation");
 }
 
-function postureControl(){
+function postureControl() {
   console.log("start preparation test");
   $('.button-options-left').hide();
   $('.button-options-right').hide();
   $('.option-select').append('Modules');
-  window.location.replace("http://127.0.0.1:8080/postureControl");
+  window.location.replace("http://129.213.192.34:8080/postureControl");
 
 }
 
-function goRealTime(){
+function goRealTime() {
   $('.button-options-left').hide();
   $('.button-options-right').hide();
   $('.option-select').append('Modules');
-  window.location.replace("http://127.0.0.1:8080/goRealTime");
+  window.location.replace("http://129.213.192.34:8080/goRealTime");
 
 }
 
-function softSkill(){
+function softSkill() {
   $('.button-options-left').hide();
   $('.button-options-right').hide();
-  window.location.replace("http://127.0.0.1:8080/softSkill");
+  window.location.replace("http://129.213.192.34:8080/softSkill");
 
 }

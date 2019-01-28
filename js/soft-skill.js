@@ -63,7 +63,7 @@
     // });
     $.ajax({
       type: 'POST',
-      url: 'http://129.213.100.184:5000/softKill',
+      url: 'http://129.213.197.247:5000/softKill',
       crossDomain: true,
       data: data,
       dataType: 'text',
@@ -173,17 +173,31 @@
         Speech Synthesis 
   ------------------------------*/
   
-  function readOutLoud(message) {
-      var speech = new SpeechSynthesisUtterance();
+  var t;
+
+function readOutLoud(message) {
+  var iframe = document.getElementById('giphy-embed');
+  console.log(iframe.src);
+  iframe.src = "images/finalavatar.gif";
+    var speech = new SpeechSynthesisUtterance();
+
+  // Set the text and voice attributes.
+    speech.text = message;
+    speech.volume = 1;
+    speech.rate = 1;
+    speech.pitch = 1;
   
-    // Set the text and voice attributes.
-      speech.text = message;
-      speech.volume = 1;
-      speech.rate = 1;
-      speech.pitch = 1;
-    
-      window.speechSynthesis.speak(speech);
-  }
+    window.speechSynthesis.speak(speech);
+    speech.onend = function (event) {
+      t = event.timeStamp - t;
+      console.log(event.timeStamp);
+      console.log((t / 1000) + " seconds");
+       iframe.src = "images/finalavatarsilent.gif";
+      // console.log((t / 1000) + " seconds");
+  };
+  
+   
+}
   
   
   
@@ -242,5 +256,5 @@
 
   function back(){
     console.log("back");
-    window.location.replace("http://127.0.0.1:8080/home");
+    window.location.replace("http://129.213.192.34:8080/home");
 }

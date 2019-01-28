@@ -1,18 +1,18 @@
 function back(){
-    window.location.replace("http://127.0.0.1:8080/home");
+    window.location.replace("http://129.213.192.34:8080/home");
 }
 $("#demo").qrcode({
     //render:"table"
     width: 128,
     height: 128,
-    text: "http://ourcodeworld.com"
+    text: "https://cdn.instavr.co/html/rnPKiMxWMUGkeFrNpIoY_app.html"
 });
 
 
 function getAudio(){
     $.ajax({
         type: 'GET',
-        url: 'http://127.0.0.1:5000/getAudio',
+        url: 'http://129.213.197.247:5000/getAudio',
         crossDomain: true,
         processData: false,
         contentType: false,

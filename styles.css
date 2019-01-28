@@ -7,7 +7,7 @@ body{
   filter: alpha(opacity=50);  */
 }
 
-canvas{
+/* canvas{
     border: 3px solid #8AC007;
     height: 45%;
     width: 50%;
@@ -15,6 +15,25 @@ canvas{
     top: 200px;
     left: 26%;
     background-color: white;
+} */
+
+.avatar{
+    /* position: absolute;
+    left: 20%;
+    height: 700px;
+    width: 60%; */
+    position: absolute;
+    left: 20%;
+    height: 20px;
+    /* width: 60%; */
+    
+}
+
+.avatar-speed-test{
+    /* position: absolute; */
+    left: 20%;
+    height: 210px;
+    width: 60%;
 }
 
 h1,p,h2,h3,h4,h5,h6,li,a,span{
@@ -47,7 +66,7 @@ button:focus {
 
 
 .container {
-    max-width: 700px;
+    max-width: 815px;
     margin: 0 auto;
     padding: 10px 50px;
     text-align: center;
@@ -76,8 +95,8 @@ button:focus {
 }
 
 .app {
-    padding-top:200px;
-    margin: 40px auto;
+    padding-top: 170px;
+    margin: 15px auto;
 }
 
 #note-textarea {
@@ -127,13 +146,13 @@ button:focus {
     #bsaHolder{ display:none;}
 }
 .button-options-right{
-    position: absolute;
-    left:5%;
+    float: left;
+    width: 20%;
     padding-top:5%;
 }
 .button-options-left{
-    position: absolute;
-    right:5%;
+    float: right;
+   width: 20%;
     padding-top:5%;
 }
 /* .posture{
@@ -184,28 +203,27 @@ button:focus {
     border-radius: 20px;
 }
 #response1{
-    /* background-color: blue; */
     position: absolute;
-    top: 133px;
+    top: 80%;
     width: 20%;
     height: 100px;
     /* border: 3px solid #8AC007; */
     word-wrap: break-word;
-    left: 10px;
+    left: -25px;
 }
 
 #response2{
-    /* background-color: blue; */
-    position: absolute;
-    bottom: 10px;
-    width: 20%;
-    height: 100px;
-    /* border: 3px solid #8AC007; */
-    word-wrap: break-word
+   /* background-color: blue; */
+   position: absolute;
+   bottom: 10px;
+   width: 20%;
+   height: 100px;
+   /* border: 3px solid #8AC007; */
+   word-wrap: break-word
 }
 
 .question{
-    top: 340px;
+    top: 250px;
     position: relative;
     /* left: 100px; */
 }
@@ -232,10 +250,9 @@ button:focus {
 }
 
 #response{
-    width: 50%;
-    position: absolute;
     display: block;
-    left:25%;
+    left: 25%;
+    padding: 10px 10px;
 }
 
 #response-soft-skill{
@@ -316,4 +333,41 @@ button:focus {
 
 #speech-buttons{
     display: inline-block !important;
+    position: relative;
+    top: -124px;
+}
+
+.qr-code{
+    display: inline-block;
+    height: 300px;
+    width: 300px;
+    border: 2px solid #8AC007;
+    background-color: white;
+    position: relative;
+}
+
+.input-single{
+    display: inline-block;
+    position: relative;
+    top: -93px;
+    height: 90px;
+    width: 97%;
+}
+
+.giphy-embed{
+    width: 378px;
+    height: 270px;
+   
+}
+
+#demo{
+    position: relative;
+    top:80px;
+}
+
+
+#speed-options{
+    width: 40%;
+    position: relative;
+    left: 31%;
 }

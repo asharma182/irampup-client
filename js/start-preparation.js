@@ -66,8 +66,8 @@ function sendDataForSpeedCheck(noteContent){
   // });
   $.ajax({
     type: 'POST',
-    // url: 'http://129.213.100.184:5000/checkAnswer',
-    url: 'http://127.0.0.1:5000/checkAnswer',
+    //url: 'http://129.213.197.247:5000/checkAnswer',
+    url: 'http://129.213.197.247:5000/checkAnswer',
     crossDomain: true,
     data: JSON.stringify(data),
     contentType: "application/json",
@@ -196,8 +196,12 @@ notesList.on('click', function(e) {
 /*-----------------------------
       Speech Synthesis 
 ------------------------------*/
+var t;
 
 function readOutLoud(message) {
+  var iframe = document.getElementById('giphy-embed');
+  console.log(iframe.src);
+  iframe.src = "images/finalavatar.gif";
     var speech = new SpeechSynthesisUtterance();
 
   // Set the text and voice attributes.
@@ -207,6 +211,15 @@ function readOutLoud(message) {
     speech.pitch = 1;
   
     window.speechSynthesis.speak(speech);
+    speech.onend = function (event) {
+      t = event.timeStamp - t;
+      console.log(event.timeStamp);
+      console.log((t / 1000) + " seconds");
+       iframe.src = "images/finalavatarsilent.gif";
+      // console.log((t / 1000) + " seconds");
+  };
+  
+   
 }
 
 
@@ -268,7 +281,7 @@ function deleteNote(dateTime) {
 
 function back(){
     console.log("back");
-    window.location.replace("http://127.0.0.1:8080/home");
+    window.location.replace("http://129.213.192.34:8080/home");
 }
 var responsedata;
 
@@ -276,7 +289,7 @@ function getQuestions(data){
     // $('span#response').append("hiii");
     $.ajax({
         type: 'GET',
-        url: 'http://127.0.0.1:5000/getQuestions/' + data,
+        url: 'http://129.213.197.247:5000/getQuestions/' + data,
         crossDomain: true,
         // data: data,
         dataType: 'text',
@@ -317,5 +330,5 @@ function next(){
 
   function back(){
     console.log("back");
-    window.location.replace("http://127.0.0.1:8080/home");
+    window.location.replace("http://129.213.192.34:8080/home");
 }

@@ -16,6 +16,7 @@
   var notesList = $('ul#notes');
   
   var noteContent = '';
+  var option_user_selection;
   
   // Get all notes from previous sessions and display them.
   var notes = getAllNotes();
@@ -56,13 +57,21 @@
     }
   };
   
+  function selectedOption(element){
+      option_user_selection = element.options[ element.selectedIndex ].text
+  console.log(option_user_selection);
+  };
+
+
   function sendDataForSpeedCheck(noteContent){
     console.log("hiii", endDate, startDate);
     var seconds = (endDate.getTime() - startDate.getTime()) / 1000;
-    var speakTime = (seconds.toString()).split(".")[0]
+    var speakTime = (seconds.toString()).split(".")[0];
+    console.log(speakTime);
      let data= {
        noteContent: noteContent,
-       speakTime: speakTime
+       speakTime: speakTime,
+       option: option_user_selection
      }
     // $.post("locathost:5000/speedtest",data, function(data, status){
     //   alert("Data: " + data + "\nStatus: " + status);
@@ -70,7 +79,8 @@
    
     $.ajax({
       type: 'POST',
-      url: 'http://127.0.0.1:5000/speedtest',
+      url: 'http://129.213.197.247:5000/speedtest',
+      // url: 'http://129.213.197.247:5000/speedtest',
       crossDomain: true,
       data: JSON.stringify(data),
       dataType: 'text',
@@ -78,13 +88,18 @@
       success: function(responseData, textStatus, jqXHR) 
       {   
         var responsedata = JSON.parse(responseData);
-        console.log(typeof(responsedata));
-          for(key in responsedata){
-            console.log(key)
-          }
-          var response = 'Your Word Count is: ' + responsedata['length'];
-          $('span#response').html(response);
-          console.log(responseData);
+        // console.log(typeof(responsedata));
+        //   for(key in responsedata){
+        //     console.log(key)
+        //   }
+        //   var response = 'Your Word Count is: ' + responsedata['length'];
+        //   $('span#response').html(response);
+        //   console.log(responseData);
+        console.log(typeof(responsedata),responsedata['result']);
+        $('span#response-speed').html('');
+        var element = 'Result: ' + '<h5>' + responsedata['result'] + '</h5>' + '<br>' +
+          'Remark: ' + '<h5>' + responsedata['remark'] + '</h5>';
+          $('span#response-speed').html(element);
   
       },
       error: function (responseData, textStatus, errorThrown) 
@@ -117,7 +132,7 @@
   
   $('#start-record-btn').on('click', function(e) {
     if (noteContent.length) {
-      noteContent += ' ';
+      noteContent = ' ';
     }
     recognition.start();
     startDate = new Date();
@@ -179,18 +194,31 @@
   /*-----------------------------
         Speech Synthesis 
   ------------------------------*/
+  var t;
+
+function readOutLoud(message) {
+  var iframe = document.getElementById('giphy-embed');
+  console.log(iframe.src);
+  iframe.src = "images/finalavatar.gif";
+    var speech = new SpeechSynthesisUtterance();
+
+  // Set the text and voice attributes.
+    speech.text = message;
+    speech.volume = 1;
+    speech.rate = 1;
+    speech.pitch = 1;
   
-  function readOutLoud(message) {
-      var speech = new SpeechSynthesisUtterance();
+    window.speechSynthesis.speak(speech);
+    speech.onend = function (event) {
+      t = event.timeStamp - t;
+      console.log(event.timeStamp);
+      console.log((t / 1000) + " seconds");
+       iframe.src = "images/finalavatarsilent.gif";
+      // console.log((t / 1000) + " seconds");
+  };
   
-    // Set the text and voice attributes.
-      speech.text = message;
-      speech.volume = 1;
-      speech.rate = 1;
-      speech.pitch = 1;
-    
-      window.speechSynthesis.speak(speech);
-  }
+   
+}
   
   
   
@@ -249,5 +277,5 @@
 
   function back(){
     console.log("back");
-    window.location.replace("http://127.0.0.1:8080/home");
+    window.location.replace("http://129.213.192.34:8080/home");
 }
