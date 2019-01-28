@@ -1,0 +1,34 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: client-app
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: client-app
+        version: v1
+    spec:
+      containers:
+      - name: client-app
+        image: iad.ocir.io/apaccpt03/client-app:2.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+      imagePullSecrets:
+      - name: regcred
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: client-app
+  labels:
+    app: client-app
+spec:
+  ports:
+  - port: 8080
+    targetPort: 8080
+  selector:
+    app: client-app
+  type: LoadBalancer
