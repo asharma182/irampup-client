@@ -317,6 +317,9 @@ function getQuestions(data){
 }
 
 function next(){
+  if (noteContent.length) {
+    noteContent = ' ';
+  }
   noteTextarea.val('');
   var i = responsedata.length;
   var random=Math.floor(Math.random() * (i+1));
