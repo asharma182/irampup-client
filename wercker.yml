@@ -35,6 +35,7 @@ deploy-to-kubernetes:
     box: python:2.7
     steps:
 
+    - bash-template
     # The step above should leave us with a Kubernetes service and deployment yml files.
     # We'll create a directory to move them to.
     - script:
