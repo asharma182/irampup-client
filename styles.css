@@ -261,11 +261,11 @@ button:focus {
 }
 
 #response-soft-skill{
-    width: 50%;
+    width: 100%;
     position: absolute;
     display: block;
-    left: 25%;
-    top: 59%;
+    left: 10%;
+    top: 61%;
 }
 
 
