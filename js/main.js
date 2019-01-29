@@ -93,7 +93,7 @@
               //var responsedata = JSON.parse(responseData);
               console.log(typeof(responsedata));
               window.location.replace("http://129.213.192.34:8080/home");
-              readOutLoud("Welcome to irampup-geekstars" + input['username']);
+              readOutLoud("Welcome to Next-gen Learning" + input['username']);
                 for(key in responsedata){
                   console.log(key)
                 }
