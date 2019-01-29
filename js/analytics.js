@@ -2,7 +2,7 @@ $(document).ready(function() {
     // executes when HTML-Document is loaded and DOM is ready
     $.ajax({
         type: 'GET',
-        url: 'http://127.0.0.1:5003/analytics1',
+        url: 'http://129.213.192.34:5003/analytics1',
         crossDomain: true,
         timeout: 15000,
         success: function(responseData, textStatus, jqXHR) 
@@ -27,7 +27,7 @@ $(document).ready(function() {
 function callanylytics2(){
     $.ajax({
         type: 'GET',
-        url: 'http://127.0.0.1:5003/analytics2',
+        url: 'http://129.213.192.34:5003/analytics2',
         crossDomain: true,
         timeout: 15000,
         success: function(responseData, textStatus, jqXHR) 
@@ -53,7 +53,7 @@ function callanylytics2(){
 function callanylytics3(){ 
     $.ajax({
         type: 'GET',
-        url: 'http://127.0.0.1:5003/analytics3',
+        url: 'http://129.213.192.34:5003/analytics3',
         crossDomain: true,
         timeout: 20000,
         success: function(responseData, textStatus, jqXHR) 
