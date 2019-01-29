@@ -103,6 +103,9 @@ button:focus {
     margin: 20px 0;
 }
 
+#note-textarea {
+    margin: 45px 0 0px 0px;
+}
 #recording-instructions {
     margin: 15px auto 60px;
 }
@@ -251,7 +254,7 @@ button:focus {
 
 #response{
     display: block;
-    left: 25%;
+    left: 33%;
     padding: 10px 10px;
     width: 430px;
     position: absolute;
@@ -262,7 +265,7 @@ button:focus {
     position: absolute;
     display: block;
     left: 25%;
-    top: 45%;
+    top: 59%;
 }
 
 
