@@ -5,39 +5,44 @@ build:
     # Check that our application's tests are passing. Since this is a python
     # application, our entry script will also install the application's dependencies
     # with Virtualenv
-    
     - internal/docker-build:
       dockerfile: Dockerfile
-      image-name: $REPO_REPOSITORY:$WERCKER_GIT_COMMIT
+      image-name: $REPO_REPOSITORY:$IMAGE_TAG_OPERATOR
       no-cache: true
+      build-args: VERSION=$JAR_VERSION
       registry-auth-config: |
         {
-          "https://iad.ocir.io/v2/": {
-            "username": "${REPO_USERNAME}",
-            "password": "${REPO_PASSWORD}"
+          "https://index.docker.io/v1/": {
+            "username": "${DOCKER_USERNAME}",
+            "password": "${DOCKER_PASSWORD}"
           }
         }
     # push the image to Docker using the GIT branch as the tag
     - internal/docker-push:
-      image-name: $REPO_REPOSITORY:$WERCKER_GIT_COMMIT
+      image-name: $REPO_REPOSITORY:$IMAGE_TAG_OPERATOR
       username: $REPO_USERNAME
       password: $REPO_PASSWORD
       repository: $REPO_REPOSITORY
       registry: $REPO_REGISTRY
-      tag: $WERCKER_GIT_COMMIT
+      tag: $IMAGE_TAG_OPERATOR
 
 deploy-to-kubernetes:
     box: python:2.7
     steps:
 
+    # https://github.com/wercker/step-bash-template
+    # This Wercker step will look for files in our repo with a .template extension.
+    # It will expand any environment variables in those files, then remove the
+    # template extension.
     - bash-template
+
     # The step above should leave us with a Kubernetes service and deployment yml files.
     # We'll create a directory to move them to.
     - script:
         name: Prepare Kubernetes files
         code: |
           mkdir $WERCKER_OUTPUT_DIR/kubernetes
-          mv kube-*.yml $WERCKER_OUTPUT_DIR/kubernetes
+          mv kubernetes_*.yml $WERCKER_OUTPUT_DIR/kubernetes
 
     # `apply` is a good command to use here, as it'll create Kubernetes entities if they are missing.
     - kubectl:
@@ -47,6 +52,14 @@ deploy-to-kubernetes:
         insecure-skip-tls-verify: true
         command: apply -f $WERCKER_OUTPUT_DIR/kubernetes/
 
+    # Tell Kubernetes that we're going to wait 60 seconds for the deploy to be successful
+    - kubectl:
+        name: set deployment timeout
+        server: $OKE_MASTER
+        token: $OKE_TOKEN
+        insecure-skip-tls-verify: true
+        command: patch deployment/get-ip -p '{"spec":{"progressDeadlineSeconds":60}}'
+
     # Watch the Kubernetes deployment. Once the pods are considered healthy the step will exit 0
     # If they aren't healthy within 60 seconds, it will exit with a non 0 exit code, and cause the run to fail.
     - kubectl:
@@ -54,4 +67,4 @@ deploy-to-kubernetes:
         server: $OKE_MASTER
         token: $OKE_TOKEN
         insecure-skip-tls-verify: true
-        command: rollout status deployment/client-app
+        command: rollout status deployment/get-ip

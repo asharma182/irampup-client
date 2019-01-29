@@ -51,7 +51,7 @@ function getDataFromAjaxCall(type){
             list +="<li>"+ "Question: " +responsedata[i][2]+"</li>" + "<br>" + "<a>" + "Answer: " +
             responsedata[i][3] + "</a>";
                }
-               $("span#response").append(list);
+               $("#response").append(list);
         //   $.each(responsedata, function(){
         //       console.log(this,this[1],this[2]);
         //       var list = "";

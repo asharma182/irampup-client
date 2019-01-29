@@ -332,3 +332,11 @@ function softSkill() {
   window.location.replace("http://129.213.192.34:8080/softSkill");
 
 }
+
+function getAnalytics() {
+  $('.button-options-left').hide();
+  $('.button-options-right').hide();
+  // window.location.replace("http://129.213.192.34:8080/softSkill");
+  window.location.replace("http://127.0.0.1:8080/userAnalytics");
+
+}

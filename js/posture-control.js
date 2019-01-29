@@ -73,7 +73,7 @@ function sendImage(blob){
         //        }
                 $("span#response").html("");
                 $("span#response").append(responseData);
-                sendImageToDb();
+               // sendImageToDb();
     
         },
         error: function (responseData, textStatus, errorThrown) 
@@ -89,7 +89,7 @@ function sendImage(blob){
 function sendImageToDb(){
   $.ajax({
     type: 'GET',
-    url: 'http://129.213.8.217:5002/imageInsertion',
+    url: 'http://127.0.0.1:5002/imageInsertion',
     crossDomain: true,
     processData: false,
     contentType: false,

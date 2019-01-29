@@ -253,6 +253,8 @@ button:focus {
     display: block;
     left: 25%;
     padding: 10px 10px;
+    width: 430px;
+    position: absolute;
 }
 
 #response-soft-skill{
@@ -370,4 +372,25 @@ button:focus {
     width: 40%;
     position: relative;
     left: 31%;
+}
+
+#analytics{
+    position: relative;
+    top: 120;
+    /* left: 44%; */
+    float: clear;
+    display: block;
+    margin-top: 20px;
+}
+#imageAnalytics{
+    height: 200px;
+    width: 200px;
+    vertical-align: middle;
+    /* position: absolute; */
+    /* left: 0px; */
+    float: left;
+    /* display: inline-block; */
+    margin-left: 31px;
+    /* position: absolute; */
+    margin-top: 20%;
 }
