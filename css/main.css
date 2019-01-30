@@ -38,8 +38,7 @@
 
 body, html {
 	height: 100%;
-  font-family: Poppins-Regular, sans-serif;
-  
+	font-family: Poppins-Regular, sans-serif;
 }
 
 /*---------------------------------------------*/
@@ -179,14 +178,13 @@ iframe {
   justify-content: center;
   align-items: center;
   padding: 15px;
-  background: url('../images/Background0.jpg');
-  background-size: cover;
+  background: #ebeeef;
 }
 
 
 .wrap-login100 {
   width: 670px;
-  background: #e4eef9;
+  background: #fff;
   border-radius: 10px;
   overflow: hidden;
   position: relative;
@@ -217,7 +215,7 @@ iframe {
 .login100-form-title-1 {
   font-family: Poppins-Bold;
   font-size: 30px;
-  color: #e4edf3;
+  color: #fff;
   text-transform: uppercase;
   line-height: 1.2;
   text-align: center;
@@ -232,7 +230,7 @@ iframe {
   height: 100%;
   top: 0;
   left: 0;
-  background-color: rgba(0, 48, 71, 0.7) !important ;
+  background-color: rgba(54,84,99,0.7);
 }
 
 
@@ -264,7 +262,7 @@ iframe {
 .label-input100 {
   font-family: Poppins-Regular;
   font-size: 15px;
-  color: #525b64;
+  color: #808080;
   line-height: 1.2;
   text-align: right;
 
@@ -404,7 +402,7 @@ input.input100 {
   padding: 0 20px;
   min-width: 160px;
   height: 50px;
-  background-color: #155a80;
+  background-color: #57b846;
   border-radius: 25px;
 
   font-family: Poppins-Regular;
@@ -419,7 +417,7 @@ input.input100 {
 }
 
 .login100-form-btn:hover {
-  background-color: #8bbfe2;
+  background-color: #333333;
 }
 
 
