@@ -82,7 +82,7 @@
         console.log(input)
         $.ajax({
             type: 'POST',
-            url: 'http://129.213.197.247:5000/newuser',
+            url: 'http://129.213.78.137:5000/newuser',
             crossDomain: true,
             data: JSON.stringify(input),
             contentType: "application/json",

@@ -68,7 +68,7 @@ function sendDataForSpeedCheck(noteContent) {
   $.ajax({
     type: 'POST',
     //url: 'http://127.0.0.1:5000/checkAnswer',
-    url: 'http://129.213.197.247:5000/checkAnswer',
+    url: 'http://129.213.78.137:5000/checkAnswer',
     crossDomain: true,
     data: JSON.stringify(data),
     contentType: "application/json",
@@ -292,7 +292,7 @@ function getQuestions(data) {
   // $('span#response').append("hiii");
   $.ajax({
     type: 'GET',
-    url: 'http://129.213.197.247:5000/getQuestions/' + data,
+    url: 'http://129.213.78.137:5000/getQuestions/' + data,
     crossDomain: true,
     // data: data,
     dataType: 'text',

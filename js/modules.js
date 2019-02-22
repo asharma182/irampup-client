@@ -33,7 +33,7 @@ function getDataFromAjaxCall(type){
 
     $.ajax({
         type: 'GET',
-        url: 'http://129.213.197.247:5000/module/' + req,
+        url: 'http://129.213.78.137:5000/module/' + req,
         crossDomain: true,
         dataType: 'text',
         timeout: 10000,
