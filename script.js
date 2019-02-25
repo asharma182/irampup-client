@@ -284,7 +284,7 @@ function speedTest() {
   $('.option-select').append('Speed Test');
   $('.app, .back-button').show();
 
-  window.location.replace("http://129.213.192.34:8080/speedTest");
+  window.location.replace("http://127.0.0.1:8080/speedTest");
 }
 
 
@@ -298,7 +298,7 @@ function searchModules() {
   $('.button-options-left').hide();
   $('.button-options-right').hide();
   $('.option-select').append('Modules');
-  window.location.replace("http://129.213.192.34:8080/modules");
+  window.location.replace("http://127.0.0.1:8080/modules");
 }
 
 function startPreparation() {
@@ -306,7 +306,7 @@ function startPreparation() {
   $('.button-options-left').hide();
   $('.button-options-right').hide();
   $('.option-select').append('Modules');
-  window.location.replace("http://129.213.192.34:8080/startPreparation");
+  window.location.replace("http://127.0.0.1:8080/startPreparation");
 }
 
 function postureControl() {
@@ -314,7 +314,7 @@ function postureControl() {
   $('.button-options-left').hide();
   $('.button-options-right').hide();
   $('.option-select').append('Modules');
-  window.location.replace("http://129.213.192.34:8080/postureControl");
+  window.location.replace("http://127.0.0.1:8080/postureControl");
 
 }
 
@@ -322,21 +322,21 @@ function goRealTime() {
   $('.button-options-left').hide();
   $('.button-options-right').hide();
   $('.option-select').append('Modules');
-  window.location.replace("http://129.213.192.34:8080/goRealTime");
+  window.location.replace("http://127.0.0.1:8080/goRealTime");
 
 }
 
 function softSkill() {
   $('.button-options-left').hide();
   $('.button-options-right').hide();
-  window.location.replace("http://129.213.192.34:8080/softSkill");
+  window.location.replace("http://127.0.0.1:8080/softSkill");
 
 }
 
 function getAnalytics() {
   $('.button-options-left').hide();
   $('.button-options-right').hide();
-  // window.location.replace("http://129.213.192.34:8080/softSkill");
+  // window.location.replace("http://127.0.0.1:8080/softSkill");
   window.location.replace("http://127.0.0.1:8080/userAnalytics");
 
 }
