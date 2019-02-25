@@ -278,10 +278,10 @@ function readOutLoud(message) {
 
   function back(){
     console.log("back");
-    window.location.replace("http://129.213.192.34:8080/home");
+    window.location.replace("http://127.0.0.1:8080/home");
 }
 
 function getAnalytics(){
   console.log("getAnalytics");
-  window.location.replace("http://129.213.192.34:8080/userAnalytics");
+  window.location.replace("http://127.0.0.1:8080/userAnalytics");
 }

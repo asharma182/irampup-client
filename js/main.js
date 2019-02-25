@@ -92,7 +92,7 @@
             {   
               //var responsedata = JSON.parse(responseData);
               console.log(typeof(responsedata));
-              window.location.replace("http://129.213.192.34:8080/home");
+              window.location.replace("http://127.0.0.1:8080/home");
               readOutLoud("Welcome to Next-gen Learning" + input['username']);
                 for(key in responsedata){
                   console.log(key)
@@ -111,8 +111,8 @@
     }
 
     function readOutLoud(message) {
-        // window.location.replace("http://129.213.192.34:8080/home");
-         window.location.replace("http://129.213.192.34:8080/home");
+        // window.location.replace("http://127.0.0.1:8080/home");
+         window.location.replace("http://127.0.0.1:8080/home");
         var speech = new SpeechSynthesisUtterance();
     
       // Set the text and voice attributes.
