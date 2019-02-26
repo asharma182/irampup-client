@@ -1,5 +1,5 @@
 function back(){
-    window.location.replace("http://127.0.0.1:8080/home");
+    window.location.replace("http://129.213.169.78:8080/home");
 }
 $("#demo").qrcode({
     //render:"table"
