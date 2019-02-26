@@ -83,7 +83,6 @@
      // url: 'http://129.213.197.247:5000/speedtest',
        url: 'http://129.213.78.137:5000/speedtest',
       crossDomain: true,
-	  content-type: 'text/plain',
       data: JSON.stringify(data),
       dataType: 'text',
       timeout: 10000,
