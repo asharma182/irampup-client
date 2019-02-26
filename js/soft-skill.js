@@ -63,7 +63,7 @@
     // });
     $.ajax({
       type: 'POST',
-      url: 'http://129.213.100.184:5002/softKill',
+      url: 'http://129.213.14.0:5002/softKill',
       crossDomain: true,
       data: data,
       dataType: 'text',
@@ -256,5 +256,5 @@ function readOutLoud(message) {
 
   function back(){
     console.log("back");
-    window.location.replace("http://129.213.192.34:8080/home");
+    window.location.replace("http://129.213.169.78:8080/home");
 }
