@@ -287,6 +287,7 @@ function speedTest() {
   window.location.replace("http://129.213.169.78:8080/speedTest");
 }
 
+//ip
 
 function back() {
   location.reload();
