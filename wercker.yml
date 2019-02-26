@@ -8,7 +8,7 @@ build:
     
     - internal/docker-build:
       dockerfile: Dockerfile
-      image-name: $REPO_REPOSITORY
+      image-name: $REPO_REPOSITORY:$WERCKER_GIT_COMMIT
       no-cache: true
       registry-auth-config: |
         {
@@ -19,12 +19,12 @@ build:
         }
     # push the image to Docker using the GIT branch as the tag
     - internal/docker-push:
-      image-name: $REPO_REPOSITORY
+      image-name: $REPO_REPOSITORY:$WERCKER_GIT_COMMIT
       username: $REPO_USERNAME
       password: $REPO_PASSWORD
       repository: $REPO_REPOSITORY
       registry: $REPO_REGISTRY
-      tag: client2.0
+      tag: $WERCKER_GIT_COMMIT
 
 deploy-to-kubernetes:
     box: python:2.7
