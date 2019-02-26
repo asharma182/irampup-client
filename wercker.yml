@@ -8,7 +8,7 @@ build:
     
     - internal/docker-build:
       dockerfile: Dockerfile
-      image-name: $REPO_REPOSITORY:$WERCKER_GIT_COMMIT
+      image-name: $REPO_REPOSITORY:client2.0
       no-cache: true
       registry-auth-config: |
         {
