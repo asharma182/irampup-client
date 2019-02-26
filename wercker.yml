@@ -19,7 +19,7 @@ build:
         }
     # push the image to Docker using the GIT branch as the tag
     - internal/docker-push:
-      image-name: $REPO_REPOSITORY:$WERCKER_GIT_COMMIT
+      image-name: $REPO_REPOSITORY
       username: $REPO_USERNAME
       password: $REPO_PASSWORD
       repository: $REPO_REPOSITORY
