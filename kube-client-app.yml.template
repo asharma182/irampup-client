@@ -12,7 +12,7 @@ spec:
     spec:
       containers:
       - name: client-app
-        image: ${REPO_REPOSITORY}
+        image: ${REPO_REPOSITORY}:client2.0
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
