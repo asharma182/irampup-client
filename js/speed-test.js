@@ -80,8 +80,8 @@
     $.ajax({
       type: 'POST',
      // url: 'http://127.0.0.1:5000/speedtest',
-     // url: 'http://129.213.78.137:5000/speedtest',
-       url: 'http://129.213.78.137:5000/speedtest',
+     // url: 'http://129.213.197.247:5000/speedtest',
+       url: 'http://129.213.197.247:5000/speedtest',
       crossDomain: true,
       data: JSON.stringify(data),
       dataType: 'text',
@@ -278,10 +278,10 @@ function readOutLoud(message) {
 
   function back(){
     console.log("back");
-    window.location.replace("http://129.213.169.78:8080/home");
+    window.location.replace("http://129.213.192.34:8080/home");
 }
 
 function getAnalytics(){
   console.log("getAnalytics");
-  window.location.replace("http://129.213.169.78:8080/userAnalytics");
+  window.location.replace("http://129.213.192.34:8080/userAnalytics");
 }

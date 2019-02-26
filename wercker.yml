@@ -3,12 +3,12 @@ build:
     steps:
 
     # Check that our application's tests are passing. Since this is a python
-    # application, our entry script will also install the application's dependencies.
+    # application, our entry script will also install the application's dependencies
     # with Virtualenv
     
     - internal/docker-build:
       dockerfile: Dockerfile
-      image-name: $REPO_REPOSITORY:client2.0
+      image-name: $REPO_REPOSITORY:$WERCKER_GIT_COMMIT
       no-cache: true
       registry-auth-config: |
         {
@@ -24,7 +24,7 @@ build:
       password: $REPO_PASSWORD
       repository: $REPO_REPOSITORY
       registry: $REPO_REGISTRY
-      tag: client2.0
+      tag: $WERCKER_GIT_COMMIT
 
 deploy-to-kubernetes:
     box: python:2.7

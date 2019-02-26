@@ -256,5 +256,5 @@ function readOutLoud(message) {
 
   function back(){
     console.log("back");
-    window.location.replace("http://129.213.169.78:8080/home");
+    window.location.replace("http://129.213.192.34:8080/home");
 }

@@ -12,7 +12,7 @@ spec:
     spec:
       containers:
       - name: client-app
-        image: ${REPO_REPOSITORY}:client2.0
+        image: ${REPO_REPOSITORY}:${WERCKER_GIT_COMMIT}
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080

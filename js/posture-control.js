@@ -52,7 +52,7 @@ function sendImage(blob){
  console.log("base64data", base64data)
     $.ajax({
         type: 'POST',
-        url: 'http://129.213.142.186:5001/posture',
+        url: 'http://129.213.140.131:5001/posture',
         crossDomain: true,
         processData: false,
         contentType: false,
@@ -109,7 +109,7 @@ function sendImageToDb(){
 }
 
 function back(){
-    window.location.replace("http://129.213.169.78:8080/home");
+    window.location.replace("http://129.213.192.34:8080/home");
 }
 
 

@@ -1,5 +1,5 @@
 function back(){
-    window.location.replace("http://129.213.169.78:8080/home");
+    window.location.replace("http://129.213.192.34:8080/home");
 }
 $("#demo").qrcode({
     //render:"table"
@@ -12,7 +12,7 @@ $("#demo").qrcode({
 function getAudio(){
     $.ajax({
         type: 'GET',
-        url: 'http://129.213.78.137:5000/getAudio',
+        url: 'http://129.213.197.247:5000/getAudio',
         crossDomain: true,
         processData: false,
         contentType: false,
