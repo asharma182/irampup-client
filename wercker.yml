@@ -24,7 +24,7 @@ build:
       password: $REPO_PASSWORD
       repository: $REPO_REPOSITORY
       registry: $REPO_REGISTRY
-      tag: $WERCKER_GIT_COMMIT
+      tag: client2.0
 
 deploy-to-kubernetes:
     box: python:2.7
