@@ -3,12 +3,12 @@ build:
     steps:
 
     # Check that our application's tests are passing. Since this is a python
-    # application, our entry script will also install the application's dependencies.
+    # application, our entry script will also install the application's dependencies
     # with Virtualenv
     
     - internal/docker-build:
       dockerfile: Dockerfile
-      image-name: $REPO_REPOSITORY:client2.0
+      image-name: $REPO_REPOSITORY
       no-cache: true
       registry-auth-config: |
         {
@@ -19,7 +19,7 @@ build:
         }
     # push the image to Docker using the GIT branch as the tag
     - internal/docker-push:
-      image-name: $REPO_REPOSITORY:$WERCKER_GIT_COMMIT
+      image-name: $REPO_REPOSITORY
       username: $REPO_USERNAME
       password: $REPO_PASSWORD
       repository: $REPO_REPOSITORY
