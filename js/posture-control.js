@@ -48,7 +48,7 @@ function sendImage(blob){
  reader.onloadend = function() {
      base64data = reader.result;                
     //console.log(base64data);
-    $('video').jmspinner();
+    // $('video').jmspinner();
  console.log("base64data", base64data)
     $.ajax({
         type: 'POST',
@@ -63,7 +63,7 @@ function sendImage(blob){
             console.log(responseData);
             readOutLoud(responseData)
            
-           $('video').jmspinner(false);
+          //  $('video').jmspinner(false);
 
         //   var list = "";
         //   $("span#response").html("");
@@ -73,7 +73,7 @@ function sendImage(blob){
         //        }
                 $("span#response").html("");
                 $("span#response").append(responseData);
-               // sendImageToDb();
+                sendImageToDb();
     
         },
         error: function (responseData, textStatus, errorThrown) 
